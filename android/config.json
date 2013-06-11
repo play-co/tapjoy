@@ -1,0 +1,12 @@
+{
+		"copyFiles": [
+			"TapJoyPlugin.java"
+		],
+		"libraries": [
+		],
+		"jars": [
+			"./tapjoyconnectlibrary.jar"
+		],
+		"injectionXML": "manifest.xml",
+		"injectionXSL": "manifest.xsl"
+}
