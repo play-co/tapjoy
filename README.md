@@ -1,6 +1,12 @@
 # Game Closure DevKit Plugin: TapJoy
 
+TapJoy support is still in progress.  In the meantime you can use this plugin as
+a starting point in case you want to integrate it yourself.  Right now only the
+Android platform is working and only for analytics it does not show advertising.
+
 ## Usage
+
+Install the addon with `basil install tapjoy`.
 
 Include it in the `manifest.json` file under the "addons" section for your game:
 
