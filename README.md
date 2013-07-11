@@ -27,10 +27,9 @@ Under the Android section, you can configure the TapJoy plugin:
 			"72": "resources/icons/android72.png",
 			"96": "resources/icons/android96.png"
 		},
-		"TapJoyAppID": "ed370f71-5c53-44ad-ac79-5e885d77d356",
-		"TapJoySecretKey": "MUmm2eD3qdBSPlcLb3qz"
+		"tapJoyAppID": "ed370f71-5c53-44ad-ac79-5e885d77d356",
+		"tapJoySecretKey": "MUmm2eD3qdBSPlcLb3qz"
 	},
 ~~~
 
 You can test for successful integration on the TapJoy website.
-
