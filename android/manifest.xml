@@ -4,8 +4,8 @@
 <!--END_PLUGINS_MANIFEST-->
 <!--START_PLUGINS_APPLICATION-->
 	<!--TapJoy-->
-	<meta-data android:name="TapJoyAppID" android:value="" />
-	<meta-data android:name="TapJoySecretKey" android:value="" />
+	<meta-data android:name="tapJoyAppID" android:value="" />
+	<meta-data android:name="tapJoySecretKey" android:value="" />
 	<activity android:name="com.tapjoy.TJCOffersWebView" android:configChanges="keyboardHidden|orientation" />
 	<activity android:name="com.tapjoy.TapjoyFullScreenAdWebView" android:configChanges="keyboardHidden|orientation" />
 	<activity android:name="com.tapjoy.TapjoyDailyRewardAdWebView" android:configChanges="keyboardHidden|orientation" />
