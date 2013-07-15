@@ -1,6 +1,12 @@
 {
 	"code": [
+		"TapjoyConnect.h",
+		"TapjoyConnectConstants.h",
+		"TapjoyPlugin.h",
+		"TapjoyPlugin.mm"
 	],
 	"frameworks": [
+		"TapjoyPublisherLibrary.a",
+		"TapjoyResources.bundle"
 	]
 }

@@ -1,8 +1,6 @@
-# Game Closure DevKit Plugin: TapJoy
+# Game Closure DevKit Plugin: Tapjoy
 
-TapJoy support is still in progress.  In the meantime you can use this plugin as
-a starting point in case you want to integrate it yourself.  Right now only the
-Android platform is working and only for analytics it does not show advertising.
+This plugin adds analytics support from the [Tapjoy service](http://tapjoy.com) for Android and iOS platforms.
 
 ## Usage
 
@@ -16,7 +14,7 @@ Include it in the `manifest.json` file under the "addons" section for your game:
 ],
 ~~~
 
-Under the Android section, you can configure the TapJoy plugin:
+Under the Android/iOS sections, you can configure the Tapjoy plugin:
 
 ~~~
 	"android": {
@@ -27,9 +25,27 @@ Under the Android section, you can configure the TapJoy plugin:
 			"72": "resources/icons/android72.png",
 			"96": "resources/icons/android96.png"
 		},
-		"tapJoyAppID": "ed370f71-5c53-44ad-ac79-5e885d77d356",
-		"tapJoySecretKey": "MUmm2eD3qdBSPlcLb3qz"
+		"tapjoyAppID": "ed370f71-5c53-44ad-ac79-5e885d77d356",
+		"tapjoySecretKey": "MUmm2eD3qdBSPlcLb3qz"
 	},
 ~~~
 
-You can test for successful integration on the TapJoy website.
+~~~
+	"ios": {
+		"bundleID": "mmp",
+		"appleID": "568975017",
+		"version": "1.0.3",
+		"icons": {
+			"57": "resources/images/promo/icon57.png",
+			"72": "resources/images/promo/icon72.png",
+			"114": "resources/images/promo/icon114.png",
+			"144": "resources/images/promo/icon144.png"
+		},
+		"tapjoyAppID": "ed370f71-5c53-44ad-ac79-5e885d77d356",
+		"tapjoySecretKey": "MUmm2eD3qdBSPlcLb3qz"
+	},
+~~~
+
+Note that the key names are case-sensitive.
+
+You can test for successful integration on the [Tapjoy website](http://tapjoy.com).
