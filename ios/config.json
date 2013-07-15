@@ -1,12 +1,29 @@
 {
 	"code": [
-		"TapjoyConnect.h",
-		"TapjoyConnectConstants.h",
 		"TapjoyPlugin.h",
 		"TapjoyPlugin.mm"
 	],
 	"frameworks": [
-		"TapjoyPublisherLibrary.a",
+		"AdSupport",
+		"CFNetwork",
+		"CoreMotion",
+		"CoreLocation",
+		"CoreTelephony",
+		"EventKitUI",
+		"EventKit",
+		"libz.1.2.5.dylib",
+		"libsqlite3.dylib",
+		"libxml2.dylib",
+		"MapKit",
+		"MediaPlayer",
+		"MessageUI",
+		"MobileCoreServices",
+		"Social",
+		"StoreKit",
+		"Twitter",
+		"UIKit",
+		"SystemConfiguration",
+		"Tapjoy.framework",
 		"TapjoyResources.bundle"
 	]
 }

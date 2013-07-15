@@ -1,5 +1,5 @@
 #import "PluginManager.h"
 
-@interface FlurryPlugin : GCPlugin
+@interface TapjoyPlugin : GCPlugin
 @end
 

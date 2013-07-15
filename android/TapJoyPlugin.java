@@ -43,7 +43,7 @@ public class TapJoyPlugin implements IPlugin {
 
 	public void onCreate(Activity activity, Bundle savedInstanceState) {
 		PackageManager manager = activity.getBaseContext().getPackageManager();
-		String[] keys = {"tapJoyAppID", "tapJoySecretKey"};
+		String[] keys = {"tapjoyAppID", "tapjoySecretKey"};
 		try {
 			Bundle meta = manager.getApplicationInfo(activity.getApplicationContext().getPackageName(),
 					PackageManager.GET_META_DATA).metaData;
@@ -56,10 +56,10 @@ public class TapJoyPlugin implements IPlugin {
 			logger.log("Exception while loading manifest keys:", e);
 		}
 
-		String tapJoyAppID = manifestKeyMap.get("tapJoyAppID");
-		String tapJoySecretKey = manifestKeyMap.get("tapJoySecretKey");
+		String tapJoyAppID = manifestKeyMap.get("tapjoyAppID");
+		String tapJoySecretKey = manifestKeyMap.get("tapjoySecretKey");
 
-		logger.log("{tapjoy} Installing TapJoy for appID:", tapJoyAppID);
+		logger.log("{tapjoy} Installing for appID:", tapJoyAppID);
 
 		// Enables logging to the console.
 		TapjoyLog.enableLogging(true);
