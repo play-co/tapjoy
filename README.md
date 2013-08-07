@@ -1,6 +1,6 @@
 # Game Closure DevKit Plugin: Tapjoy
 
-This plugin adds analytics support from the [Tapjoy service](http://tapjoy.com) for Android and iOS platforms.
+This plugin adds advertising support from the [Tapjoy service](http://tapjoy.com) for Android and iOS platforms.
 
 ## Usage
 
