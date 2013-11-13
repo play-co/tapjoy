@@ -61,7 +61,7 @@ public class TapJoyPlugin implements IPlugin {
 		logger.log("{tapjoy} Installing for appID:", tapJoyAppID);
 
 		// Enables logging to the console.
-		TapjoyLog.enableLogging(true);
+		//TapjoyLog.enableLogging(true);
 
 		// Connect with the Tapjoy server.
 		TapjoyConnect.requestTapjoyConnect(_ctx, tapJoyAppID, tapJoySecretKey);
