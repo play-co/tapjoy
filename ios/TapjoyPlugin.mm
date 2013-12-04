@@ -28,10 +28,33 @@
 
 		[Tapjoy requestTapjoyConnect:tapjoyAppID secretKey:tapjoySecretKey];
 		[Tapjoy enableLogging:YES];
+
+		[[NSNotificationCenter defaultCenter] addObserver:self
+			selector:@selector(offerwallClosed:)
+			name:TJC_VIEW_CLOSED_NOTIFICATION object:nil];
+
 	}
 	@catch (NSException *exception) {
 		NSLog(@"{tapjoy} Failure during startup: %@", exception);
 	}
+}
+
+- (void) setUserID:(NSDictionary *)jsonObject {
+	NSString *userID = (NSString *)[jsonObject objectForKey:@"userID"];
+	[TapjoyConnect setUserID:userID];
+	NSLog(@"{tapjoy} Setting user id: %@", userID);
+}
+
+- (void) showOffers:(NSDictionary *)jsonObject {
+	[TapjoyConnect showOffers];
+}
+
+-(void)offerwallClosed:(NSNotification*)notifyObj {
+	NSLog(@"{tapjoy} Offerwall closed");
+	[[PluginManager get] dispatchJSEvent:[NSDictionary dictionaryWithObjectsAndKeys:
+		@"tapjoyOfferClose",@"name",
+		nil]];
+
 }
 
 @end

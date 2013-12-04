@@ -1,14 +1,17 @@
 <!--START_PLUGINS_MANIFEST-->
-	<!--TapJoy-->
+	<!--Tapjoy-->
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <!--END_PLUGINS_MANIFEST-->
 <!--START_PLUGINS_APPLICATION-->
-	<!--TapJoy-->
+	<!--Tapjoy-->
 	<meta-data android:name="tapjoyAppID" android:value="" />
 	<meta-data android:name="tapjoySecretKey" android:value="" />
-	<activity android:name="com.tapjoy.TJCOffersWebView" android:configChanges="keyboardHidden|orientation" />
-	<activity android:name="com.tapjoy.TapjoyFullScreenAdWebView" android:configChanges="keyboardHidden|orientation" />
+	<activity android:name="com.tapjoy.TJCOffersWebView" android:configChanges="keyboardHidden|orientation|screenSize" />
+	<activity android:name="com.tapjoy.TapjoyFullScreenAdWebView" android:configChanges="keyboardHidden|orientation|screenSize" />
 	<activity android:name="com.tapjoy.TapjoyDailyRewardAdWebView" android:configChanges="keyboardHidden|orientation" />
-	<activity android:name="com.tapjoy.TapjoyVideoView" android:configChanges="keyboardHidden|orientation" />
+	<activity android:name="com.tapjoy.TapjoyVideoView" android:configChanges="keyboardHidden|orientation|screenSize" />
+	<activity android:name="com.tapjoy.TJAdUnitView" android:configChanges="keyboardHidden|orientation|screenSize" android:hardwareAccelerated="true" />
+	<activity android:name="com.tapjoy.mraid.view.ActionHandler" android:configChanges="keyboardHidden|orientation|screenSize" />
+	<activity android:name="com.tapjoy.mraid.view.Browser" android:configChanges="keyboardHidden|orientation|screenSize" />
 <!--END_PLUGINS_APPLICATION-->
 

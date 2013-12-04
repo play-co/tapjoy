@@ -22,18 +22,25 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 
-import com.tealeaf.EventQueue;
 import com.tealeaf.event.*;
 
 import com.tapjoy.TapjoyConnect;
 import com.tapjoy.TapjoyConstants;
 import com.tapjoy.TapjoyLog;
 
-public class TapJoyPlugin implements IPlugin {
+public class TapjoyPlugin implements IPlugin {
 	Context _ctx;
 	HashMap<String, String> manifestKeyMap = new HashMap<String,String>();
+	boolean launchedOfferWall;
 
-	public TapJoyPlugin() {
+	public class tapjoyOfferClose extends com.tealeaf.event.Event {
+
+		public tapjoyOfferClose() {
+			super("tapjoyOfferClose");
+		}
+	}
+
+	public TapjoyPlugin() {
 	}
 
 	public void onCreateApplication(Context applicationContext) {
@@ -67,7 +74,30 @@ public class TapJoyPlugin implements IPlugin {
 		TapjoyConnect.requestTapjoyConnect(_ctx, tapJoyAppID, tapJoySecretKey);
 	}
 
+	public void setUserID(String jsonData) {
+		try {
+			JSONObject jsonObject = new JSONObject(jsonData);
+			String userID = jsonObject.getString("userID");
+			logger.log("{tapjoy} Setting userid : "+userID);
+			TapjoyConnect.getTapjoyConnectInstance().setUserID(userID);
+		} catch (Exception e) {
+			logger.log("{tapjoy} WARNING: Failure in setUserID:", e);
+			e.printStackTrace();
+		}
+	}
+
+	public void showOffers(String jsonData) {
+		launchedOfferWall = true;
+		TapjoyConnect.getTapjoyConnectInstance().showOffers();
+	}
+
 	public void onResume() {
+		logger.log("{tapjoy} onResume");
+		if (launchedOfferWall) {
+			logger.log("{tapjoy} Offer closed");
+			launchedOfferWall = false;
+			EventQueue.pushEvent(new tapjoyOfferClose());
+		}
 	}
 
 	public void onStart() {
@@ -101,4 +131,3 @@ public class TapJoyPlugin implements IPlugin {
 	public void onBackPressed() {
 	}
 }
-
