@@ -32,6 +32,12 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self
 			selector:@selector(offerwallClosed:)
 			name:TJC_VIEW_CLOSED_NOTIFICATION object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self
+			selector:@selector(fullScreenAdAvailable:)
+			name:TJC_FULL_SCREEN_AD_RESPONSE_NOTIFICATION object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self
+			selector:@selector(fullScreenAdNotAvailable:)
+			name:TJC_FULL_SCREEN_AD_RESPONSE_NOTIFICATION_ERROR object:nil];
 
 	}
 	@catch (NSException *exception) {
@@ -41,12 +47,12 @@
 
 - (void) setUserID:(NSDictionary *)jsonObject {
 	NSString *userID = (NSString *)[jsonObject objectForKey:@"userID"];
-	[TapjoyConnect setUserID:userID];
+	[Tapjoy setUserID:userID];
 	NSLog(@"{tapjoy} Setting user id: %@", userID);
 }
 
 - (void) showOffers:(NSDictionary *)jsonObject {
-	[TapjoyConnect showOffers];
+	[Tapjoy showOffers];
 }
 
 -(void)offerwallClosed:(NSNotification*)notifyObj {
@@ -54,7 +60,29 @@
 	[[PluginManager get] dispatchJSEvent:[NSDictionary dictionaryWithObjectsAndKeys:
 		@"tapjoyOfferClose",@"name",
 		nil]];
-
 }
 
+-(void)getFullScreenAd:(NSDictionary *)jsonObject {
+	NSLog(@"{tapjoy} getFullscreen ad");
+	[Tapjoy getFullScreenAd];
+}
+
+
+- (void)showFullScreenAd:(NSNotification*)notifyObj {
+	NSLog(@"{tapjoy} fullscreen ad shown");
+	[Tapjoy showFullScreenAd];
+}
+
+-(void)fullScreenAdAvailable: (NSDictionary *)jsonObject {
+	[[PluginManager get] dispatchJSEvent:[NSDictionary dictionaryWithObjectsAndKeys:
+		@"tapjoyAdAvailable",@"name",
+		nil]];
+}
+
+- (void)fullScreenAdNotAvailable:(NSNotification*)notifyObj {
+	NSLog(@"{tapjoy} There is no fullscren Ad available!");
+	[[PluginManager get] dispatchJSEvent:[NSDictionary dictionaryWithObjectsAndKeys:
+		@"tapjoyAdNotAvailable",@"name",
+		nil]];
+}
 @end
