@@ -55,7 +55,7 @@ var Tapjoy = Class(function () {
 		NATIVE.events.registerHandler("tapjoyAdAvailable", function() {
 			logger.log("{tapjoy} ad available");
 			if (typeof onAdAvailable === "function") {
-				onAdAvailable();
+				onAdAvailable("tapjoy");
 			}
 		});
 
