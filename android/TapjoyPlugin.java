@@ -26,6 +26,7 @@ import com.tealeaf.event.*;
 
 import com.tapjoy.TapjoyConnect;
 import com.tapjoy.TapjoyConstants;
+import com.tapjoy.TapjoyFullScreenAdNotifier;
 import com.tapjoy.TapjoyLog;
 
 public class TapjoyPlugin implements IPlugin {
@@ -37,6 +38,32 @@ public class TapjoyPlugin implements IPlugin {
 
 		public tapjoyOfferClose() {
 			super("tapjoyOfferClose");
+		}
+
+	}
+
+	public class tapjoyAdAvailable extends com.tealeaf.event.Event {
+
+		public tapjoyAdAvailable() {
+			super("tapjoyAdAvailable");
+		}
+	}
+
+	public class tapjoyAdNotAvailable extends com.tealeaf.event.Event {
+
+		public tapjoyAdNotAvailable() {
+			super("tapjoyAdNotAvailable");
+		}
+	}
+
+	public class tapjoyAdNotifier implements TapjoyFullScreenAdNotifier {
+
+		public void getFullScreenAdResponse() {
+			EventQueue.pushEvent(new tapjoyAdAvailable());
+		}
+
+		public void getFullScreenAdResponseFailed(int error) {
+			EventQueue.pushEvent(new tapjoyAdNotAvailable());
 		}
 	}
 
@@ -89,6 +116,15 @@ public class TapjoyPlugin implements IPlugin {
 	public void showOffers(String jsonData) {
 		launchedOfferWall = true;
 		TapjoyConnect.getTapjoyConnectInstance().showOffers();
+	}
+
+	public void getFullScreenAd(String jsonData) {
+		TapjoyConnect.getTapjoyConnectInstance().getFullScreenAd(new tapjoyAdNotifier());
+	}
+
+	public void showFullScreenAd(String jsonData) {
+		launchedOfferWall = true;
+		TapjoyConnect.getTapjoyConnectInstance().showFullScreenAd();
 	}
 
 	public void onResume() {
